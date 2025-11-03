@@ -1,0 +1,338 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* Fondo escarlata en gradiente similar al anterior: rojo oscuro a rojo claro */
+  background: linear-gradient(135deg, #8b1538 0%, #c41e3a 50%, #e8354f 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.app-header {
+  /* Restaurado al gradiente púrpura original */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 8px;
+}
+
+.app-header p {
+  opacity: 0.9;
+  font-size: 0.95em;
+}
+
+.app-main {
+  padding: 30px 20px;
+}
+
+.task-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.task-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.task-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.btn-add {
+  padding: 12px 20px;
+  /* Restaurado al color púrpura original */
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-add:hover {
+  /* Hover púrpura original */
+  background: #5568d3;
+}
+
+.stats {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.stats h3 {
+  font-size: 0.95em;
+  color: #333;
+  margin: 5px 0;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  padding: 40px 20px;
+  font-style: italic;
+}
+
+.task-list {
+  list-style: none;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+}
+
+.task-item:hover {
+  background: #f0f0f0;
+  transform: translateX(5px);
+}
+
+.task-item.completed {
+  opacity: 0.6;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  /* Restaurado accent-color púrpura original */
+  accent-color: #667eea;
+}
+
+.task-title {
+  flex: 1;
+  font-size: 1em;
+  color: #333;
+}
+
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.btn-delete {
+  padding: 6px 12px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background 0.3s;
+}
+
+.btn-delete:hover {
+  background: #ff5252;
+}
+
+.app-footer {
+  background: #f5f5f5;
+  padding: 15px;
+  text-align: center;
+  color: #666;
+  font-size: 0.9em;
+  border-top: 1px solid #eee;
+}
+
+/* Estilos para el modal de confirmación */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  max-width: 400px;
+  width: 90vw;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-title {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.modal-message {
+  color: #666;
+  font-size: 1em;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.modal-btn-cancel {
+  padding: 10px 20px;
+  background: #e0e0e0;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.modal-btn-cancel:hover {
+  background: #d0d0d0;
+}
+
+.modal-btn-confirm {
+  padding: 10px 20px;
+  /* Restaurado a púrpura original */
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.modal-btn-confirm:hover {
+  /* Hover púrpura original */
+  background: #5568d3;
+}
+
+/* Estilos para botón de resumen */
+.summary-button {
+  width: 100%;
+  padding: 12px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.3s;
+  font-size: 1em;
+}
+
+.summary-button:hover {
+  background: #5568d3;
+}
+
+/* Estilos para modal de resumen */
+.modal-summary {
+  max-width: 500px;
+}
+
+.summary-section {
+  margin-bottom: 25px;
+}
+
+.summary-section-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.pending-title {
+  color: #ff9800;
+}
+
+.completed-title {
+  color: #4caf50;
+}
+
+.summary-list {
+  list-style: none;
+}
+
+.summary-item {
+  padding: 10px 15px;
+  background: #f9f9f9;
+  border-left: 3px solid #ff9800;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  color: #333;
+}
+
+.summary-item.completed-item {
+  background: #f0f8f0;
+  border-left-color: #4caf50;
+  color: #666;
+}
+
+.summary-empty {
+  text-align: center;
+  color: #999;
+  padding: 15px;
+  font-style: italic;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
