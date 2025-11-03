@@ -1,11 +1,5 @@
 # TaskBoard - Gestor de Tareas Interactivo
 
-## Información del Proyecto
-
-**Tipo:** Examen Parcial - Programación Web  
-**Temas:** ReactJS, Redux, flujo de acciones y reducers  
-Aplicación TaskBoard - Lista de tareas colaborativa 
-
 ---
 
 ## Descripción
